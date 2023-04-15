@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional</title>
+</head>
+<body>
+    <script>
+        // console.log( null || 2 || undefined );
+        // console.log( alert(1) || 2 || alert(3) );
+        // console.log( 1 && null && 2 );
+
+      let age=24;
+        if(age>=18 && age<=90){
+           console.log("You are eligible to drive")
+        }
+       
+        // Set the current day of the week to a variable, with 0 being Sunday and 6 being Saturday
+const day = new Date().getDay();
+
+switch (day) {
+	case 0:
+		console.log("It's Sunday, time to relax!");
+		break;
+	case 1:
+		console.log("Happy Monday!");
+		break;
+	case 2:
+		console.log("It's Tuesday. You got this!");
+		break;
+	case 3:
+		console.log("Hump day already!");
+		break;
+	case 4:
+		console.log("Just one more day 'til the weekend!");
+		break;
+	case 5:
+		console.log("Happy Friday!");
+		break;
+	case 6:
+		console.log("Have a wonderful Saturday!");
+		break;
+	default:
+		console.log("Something went horribly wrong...");
+}
+
+// Set the student's grade
+const grade = 87;
+
+switch (true) {
+	// If score is 90 or greater
+	case grade >= 90:
+		console.log("A");
+		break;
+	// If score is 80 or greater
+	case grade >= 80:
+		console.log("B");
+		break;
+	// If score is 70 or greater
+	case grade >= 70:
+		console.log("C");
+		break;
+	// If score is 60 or greater
+	case grade >= 60:
+		console.log("D");
+		break;
+	// Anything 59 or below is failing
+	default:
+		console.log("F");
+}
+    </script>
+</body>
+</html>
