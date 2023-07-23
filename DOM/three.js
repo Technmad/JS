@@ -16,7 +16,7 @@ header.textContent = "I'm a blue h3!";
 container.appendChild(header);
 
 const container1 = document.createElement("div");
-container1.setAttribute("style", "background: pink,border: 1");
+container1.setAttribute("style", "background: pink; border: 1px");
 
 const header1 = document.createElement("h1");
 header1.textContent = "I'm in a div";
