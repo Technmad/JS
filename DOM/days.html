@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="days">Sunday</div>
+      <div class="days">Monday</div>
+      <div class="days">Tuesday</div>
+      <div class="days">Wednesday</div>
+      <div class="days">Thursday</div>
+      <div class="days">Friday</div>
+      <div class="days">Saturday</div>
+    </div>
+    <script>
+      const container = document.querySelector(".container");
+
+      console.log(container.children);
+      // provide HTMLCollection of all child nodes
+      console.log(container.children[0]);
+
+      // to access all child nodes in HTMLCollection
+      for (let i = 0; i < container.children.length; i++) {
+        console.log(container.children[i].innerHTML);
+      }
+
+      // can convert HTMLCollection into array
+      // Array.from(HTMLCollection)
+
+      // changing properties
+      container.children[3].style.color = "Red";
+
+      // access child thr parent
+      console.log(container.firstElementChild);
+      console.log(container.lastElementChild);
+
+      // access parent from child
+      const firstDay = document.querySelector(".days");
+      console.log(firstDay);
+      console.log(firstDay.parentElement);
+
+      // acess next siblings
+      console.log(firstDay.nextElementSibling);
+
+      // nodes in parent
+      console.log("NODES : ", container.childNodes);
+    </script>
+  </body>
+</html>
