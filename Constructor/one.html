@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <script>
+      const playerOne = {
+        name: "chintu",
+        marker: "X",
+      };
+      const playerTwo = {
+        name: "pintu",
+        marker: "O",
+      };
+
+      function printName(player) {
+        console.log(player.name);
+      }
+
+      printName(playerOne);
+
+      function gameOver(winningPlayer) {
+        console.log("Congratulations!");
+        console.log(winningPlayer.name + " is the winner!");
+      }
+
+      function Player(name, marker) {
+        this.name = name;
+        this.marker = marker;
+        this.sayName = function () {
+          console.log(name);
+        };
+      }
+
+      const player1 = new Player("raju", "X");
+      console.log(player1.sayName());
+    </script>
+  </body>
+</html>
