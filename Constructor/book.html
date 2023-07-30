@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book</title>
+  </head>
+  <body>
+    <script>
+      function Book(title, author, pages, read) {
+        (this.title = title),
+          (this.author = author),
+          (this.pages = pages),
+          (this.readingStatus = read),
+          (this.info = function () {
+            return `${this.author} by ${this.author}, ${this.pages} pages, ${this.readingStatus}`;
+          });
+      }
+
+      const artOfWar = new Book("Art of War", "Sun Tzu", "150", "not read yet");
+      console.log(artOfWar.info());
+    </script>
+  </body>
+</html>
