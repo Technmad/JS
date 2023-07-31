@@ -36,7 +36,26 @@
       }
 
       const player1 = new Player("raju", "X");
-      console.log(player1.sayName());
+      const player2 = new Player("bablu", "O");
+      //console.log(player1.sayName());
+
+      console.log(Object.getPrototypeOf(player1) === Player.prototype); // returns true
+      console.log(Object.getPrototypeOf(player2) === Player.prototype); // returns true
+
+      Player.prototype.sayHello = function () {
+        console.log("Hello, I'm a player!");
+      };
+
+      player1.sayHello(); // logs "Hello, I'm a player!"
+      player2.sayHello(); // logs "Hello, I'm a player!"
+
+      console.log(player1.__proto__ === Player.prototype); // returns true
+
+      console.log(Object.getPrototypeOf(Player.prototype) === Object.prototype);
+      console.log(player1.valueOf());
+      console.log(player1.hasOwnProperty("valueOf"));
+      console.log(Object.prototype.hasOwnProperty("valueOf"));
+      console.log(Object.prototype.hasOwnProperty("hasOwnProperty"));
     </script>
   </body>
 </html>
