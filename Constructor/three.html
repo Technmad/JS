@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This Keyword</title>
+  </head>
+  <body>
+    <script>
+      const numbers = {
+        numberA: 5,
+        numberB: 10,
+
+        sum: function () {
+          console.log(this === numbers); // => true
+
+          function calculate() {
+            // this is window or undefined in strict mode
+            console.log(this === numbers); // => false
+            return this.numberA + this.numberB;
+          }
+          // use .call() method to modify the context
+          //return calculate.call(this);
+          return calculate();
+        },
+      };
+
+      console.log(numbers.sum());
+      //NOTE
+      // numbers.sum() is a method invocation on an object
+      //calculate() is a function invocation (but not method invocation), thus here this is the global object window.Even if the outer function numbers.sum() has the context as numbers object, it doesn't have influence here.
+
+      // Solution Approach 1
+      //One solution is to change manually the context of calculate() to the desired one by calling calculate.call(this)
+
+      // Solution Approach 2
+      //The arrow function resolves this lexically, or, in other words, uses this value of numbers.sum() method.
+
+      //   const numbers = {
+      //     numberA: 5,
+      //     numberB: 10,
+      //     sum: function () {
+      //       console.log(this === numbers); // => true
+
+      //       const calculate = () => {
+      //         console.log(this === numbers); // => true
+      //         return this.numberA + this.numberB;
+      //       };
+
+      //       return calculate();
+      //     },
+      //   };
+
+      //   numbers.sum();
+    </script>
+  </body>
+</html>
