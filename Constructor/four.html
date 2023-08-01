@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Method Invocation</title>
+  </head>
+  <body>
+    <script>
+      const words = ["Hello", "World"];
+      words.join(", "); // method invocation
+
+      const obj = {
+        myMethod() {
+          return new Date().toString();
+        },
+      };
+      obj.myMethod(); // method invocation
+
+      const func = obj.myMethod;
+      func(); // function invocation
+      parseFloat("16.6"); // function invocation
+      isNaN(0); // function invocation
+
+      // -------------------------------------------------------------------
+
+      const myDog = Object.create({
+        sayName() {
+          console.log(this === myDog); // => true
+          return this.name;
+        },
+      });
+
+      myDog.name = "Milo";
+      // method invocation. this is myDog
+      myDog.sayName(); // => 'Milo'
+
+      //Object.create() creates a new object myDog and sets its prototype from the first argument. myDog object inherits sayName method.
+      //When myDog.sayName() is executed, myDog is the context of invocation.
+
+      //-----------------------------------------------------------------------
+    </script>
+  </body>
+</html>
