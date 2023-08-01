@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Method Invocation</title>
+  </head>
+  <body>
+    <script>
+      function Pet(type, legs) {
+        this.type = type;
+        this.legs = legs;
+
+        this.logInfo = function () {
+          console.log(this === myCat); // => true
+          console.log(`The ${this.type} has ${this.legs} legs`);
+        };
+      }
+
+      const myCat = new Pet("Cat", 4);
+
+      // Create a bound function
+      const boundLogInfo = myCat.logInfo.bind(myCat);
+      // logs "The Cat has 4 legs"
+      setTimeout(boundLogInfo, 1000);
+
+      //-------------------------------------------------------
+
+      //   function Pet(type, legs) {
+      //     this.type = type;
+      //     this.legs = legs;
+
+      //     this.logInfo = () => {
+      //       console.log(this === myCat); // => true
+      //       console.log(`The ${this.type} has ${this.legs} legs`);
+      //     };
+      //   }
+
+      //   const myCat = new Pet("Cat", 4);
+      //   // logs "The Cat has 4 legs"
+      //   setTimeout(myCat.logInfo, 1000);
+    </script>
+  </body>
+</html>
