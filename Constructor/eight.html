@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bound invocation</title>
+  </head>
+  <body>
+    <script>
+      const numbers = {
+        array: [3, 5, 10],
+
+        getNumbers() {
+          return this.array;
+        },
+      };
+
+      // Create a bound function
+      const boundGetNumbers = numbers.getNumbers.bind(numbers);
+      boundGetNumbers(); // => [3, 5, 10]
+
+      // Extract method from object
+      const simpleGetNumbers = numbers.getNumbers;
+      simpleGetNumbers(); // => undefined or throws an error in strict mod
+
+      //numbers.getNumbers.bind(numbers) returns a function boundGetNumbers which context is bound to numbers. Then boundGetNumbers() is invoked with this as numbers and returns the correct array object.
+
+      // The function numbers.getNumbers is extracted into a variable simpleGetNumbers without binding. On later function invocation simpleGetNumbers() has this as window or undefined in strict mode, but not numbers object (see 3.2. Pitfall). In this case simpleGetNumbers() will not return correctly the array.
+    </script>
+  </body>
+</html>
