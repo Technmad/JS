@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>new</title>
+  </head>
+  <body>
+    <script>
+      function Vehicle(type, wheelsCount) {
+        this.type = type;
+        this.wheelsCount = wheelsCount;
+        return this;
+      }
+
+      // Function invocation
+      const car = Vehicle("Car", 4);
+      car.type; // => 'Car'
+      car.wheelsCount; // => 4
+      car === window; // => true
+
+      //However, this is window object in a function invocation (see 2.1.), thus Vehicle('Car', 4) sets properties on the window object. This is a mistake. A new object is not created.
+      //-------------------------------------------------------
+
+      function Vehicle(type, wheelsCount) {
+        if (!(this instanceof Vehicle)) {
+          throw Error("Error: Incorrect invocation");
+        }
+
+        this.type = type;
+        this.wheelsCount = wheelsCount;
+        return this;
+      }
+
+      // Constructor invocation
+      const car2 = new Vehicle("Car", 4);
+      car2.type; // => 'Car'
+      car2.wheelsCount; // => 4
+      car2 instanceof Vehicle; // => true
+
+      // Function invocation. Throws an error.
+      const brokenCar = Vehicle("Broken Car", 3);
+
+      //new Vehicle('Car', 4) works well: a new object is created and initialized because new keyword is present in the constructor invocation.
+    </script>
+  </body>
+</html>
