@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arrow fn</title>
+  </head>
+  <body>
+    <script>
+      function Period(hours, minutes) {
+        this.hours = hours;
+        this.minutes = minutes;
+      }
+
+      Period.prototype.format = () => {
+        console.log(this === window); // => true
+        return this.hours + " hours and " + this.minutes + " minutes";
+      };
+
+      const walkPeriod = new Period(2, 30);
+      walkPeriod.format(); // => 'undefined hours and undefined minutes'
+
+      //----------------------------
+      //       Since format is an arrow function and is defined in the global context (topmost scope), it has this as window object.
+
+      // Even if format is executed as a method on an object walkPeriod.format(), window is kept as the context of invocation. It happens because the arrow function has a static context that doesn't change on different invocation types.
+
+      // The method returns 'undefined hours and undefined minutes', which is not the expected result.
+
+      // 👍 The function expression solves the problem because a regular function does change its context depending on invocation:
+
+      function Period(hours, minutes) {
+        this.hours = hours;
+        this.minutes = minutes;
+      }
+
+      Period.prototype.format = function () {
+        console.log(this === walkPeriod); // => true
+        return this.hours + " hours and " + this.minutes + " minutes";
+      };
+
+      const walkPeriod2 = new Period(2, 30);
+      walkPeriod2.format(); // => '2 hours and 30 minutes'
+    </script>
+  </body>
+</html>
