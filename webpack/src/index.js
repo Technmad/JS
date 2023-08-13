@@ -2,7 +2,7 @@ import myName from "./myName";
 
 function comoponent() {
   const element = document.createElement("div");
-  element.textContent = myName("cody");
+  element.textContent = myName("Anurag");
   return element;
 }
 
