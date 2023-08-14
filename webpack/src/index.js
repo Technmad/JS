@@ -8,7 +8,7 @@ function comoponent() {
   element.classList.add("hello");
 
   // adding image to the file
-  const myIcon = new Icon();
+  const myIcon = new Image();
   myIcon.src = Icon;
 
   element.appendChild(myIcon);
