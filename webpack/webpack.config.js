@@ -10,9 +10,15 @@ module.exports = {
 
   module: {
     rules: [
+      // load css style
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+      },
+      //load images
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },
