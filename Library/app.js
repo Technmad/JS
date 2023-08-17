@@ -10,12 +10,14 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
   const newBook = new Book(title, author, pages, read);
   Library.push(newBook);
+  // looping over each book
   for (let i = 0; i < Library.length; ++i) {
     displayBooks(Library[i]);
   }
 }
 
 function displayBooks(items) {
+  // display book info in form of grid
   console.log(items);
 }
 
