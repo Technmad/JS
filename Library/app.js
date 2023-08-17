@@ -8,7 +8,13 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary() {
-  const newBook = new Book(title, author, pages, read);
+  console.log("submit btn is clicked");
+  const newBook = new Book(
+    title.value,
+    author.value,
+    pages.value,
+    readStatus.value
+  );
   Library.push(newBook);
   // looping over each book
   for (let i = 0; i < Library.length; ++i) {
@@ -21,9 +27,14 @@ function displayBooks(items) {
   console.log(items);
 }
 
+function clearForm() {}
+
 const newBookBtn = document.querySelector("#new-book-btn");
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const readStatus = document.querySelector("#status");
 const submitBtn = document.querySelector("#submit-btn");
+const clearBtn = document.querySelector("#clear-btn");
+
+submitBtn.addEventListener("click", addBookToLibrary);
