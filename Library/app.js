@@ -1,12 +1,5 @@
 const Library = [];
 
-const thinkAndGrowRich = new Book(
-  "Think and Grow Rich",
-  "Napolean Hill",
-  "150",
-  "Not read"
-);
-
 //constructor
 function Book(title, author, pages, read) {
   (this.title = title),
@@ -15,52 +8,45 @@ function Book(title, author, pages, read) {
     (this.read = read);
 }
 
-function addBookToLibrary() {
-  console.log("submit btn is clicked");
-  if (title.value.length === 0 || author.value.length === 0) {
-    alert("Please, fill all the fields");
-  }
-
-  const newBook = new Book(
-    title.value,
-    author.value,
-    pages.value,
-    readStatus.value
-  );
-
-  // adding book to array
-  Library.push(newBook);
-}
-
 const newBookBtn = document.querySelector("#new-book-btn");
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const readStatus = document.querySelector("#status");
-// const submitBtn = document.querySelector("#submit-btn");
-const clearBtn = document.querySelector("#clear-btn");
 const bookForm = document.querySelector("form");
+const overlay = document.getElementById("overlay");
+const booksGrid = document.getElementById("booksGrid");
+const popup = document.getElementById("popup");
 
 bookForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addBookToLibrary();
-  displayBooks();
-  clearForm();
 });
 
-function clearForm() {
-  title.value = "";
-  author.value = "";
-  pages.value = "";
-  readStatus.value = "";
+function addBookToLibrary() {
+  const newBook = new Book(
+    title.value,
+    author.value,
+    pages.value,
+    readStatus.checked
+  );
+
+  if (Library.includes(newBook)) {
+    errorMsg.textContent = "This book already exists in your library";
+    errorMsg.classList.add("active");
+    return;
+  }
+
+  // adding book to array
+  Library.push(newBook);
+  bookForm.reset();
+  displayBooks();
+  closePopUp();
 }
 
 function displayBooks() {
-  // display book info in form of grid
-  const display = document.getElementById("display-container");
-
-  const books = document.querySelectorAll(".book");
-  books.forEach((book) => display.removeChild(book));
+  // reset grid
+  booksGrid.innerHTML = "";
 
   // looping over each book
   for (let i = 0; i < Library.length; i++) {
@@ -69,15 +55,12 @@ function displayBooks() {
 }
 
 function createCards(items) {
-  const displayCards = document.getElementById("display-container");
-
   const bookCard = document.createElement("div");
   const title = document.createElement("div");
   const author = document.createElement("div");
   const pages = document.createElement("div");
   const readStatus = document.createElement("button");
   const remove = document.createElement("button");
-  // const edit = document.createElement("button");
 
   bookCard.classList.add("book");
   bookCard.setAttribute("id", Library.indexOf(items));
@@ -100,18 +83,20 @@ function createCards(items) {
   // read status
   if (items.read == false) {
     readStatus.textContent = "Not Read";
-    readStatus.style.backgroundColor = "red";
+    readStatus.style.backgroundColor = "#e04f63";
+    // readStatus.classList.add("btn-light-red");
   } else {
-    readStatus.textContent = "Not Read";
-    readStatus.style.backgroundColor = "green";
+    readStatus.textContent = "Read";
+    readStatus.style.backgroundColor = "#63da63";
+    // readStatus.classList.add("btn-light-green");
   }
 
-  // remove card
+  // remove button
   remove.textContent = "Remove";
   remove.setAttribute("id", "remove-card");
   bookCard.appendChild(remove);
 
-  displayCards.appendChild(bookCard);
+  booksGrid.appendChild(bookCard);
 
   remove.addEventListener("click", () => {
     Library.splice(Library.indexOf(items), 1);
@@ -123,3 +108,22 @@ function createCards(items) {
     displayBooks();
   });
 }
+
+const openPopUp = () => {
+  bookForm.reset();
+  popup.classList.add("active");
+  overlay.classList.add("active");
+};
+
+const closePopUp = () => {
+  popup.classList.remove("active");
+  overlay.classList.remove("active");
+};
+
+const handleKeyboardInput = (e) => {
+  if (e.key === "Escape") closePopUp();
+};
+
+newBookBtn.onclick = openPopUp;
+overlay.onclick = closePopUp;
+window.onkeydown = handleKeyboardInput;
