@@ -8,17 +8,19 @@
     <script src="app.js" defer></script>
   </head>
   <body>
-    <header>
+    <header class="container header">
       <h1>bookMania</h1>
-      <nav class="btn">
-        <button id="new-book-btn"><strong>+ add book</strong></button>
-      </nav>
+      <button id="new-book-btn" class="btn btn-add">
+        <strong>+ add book</strong>
+      </button>
     </header>
-    <section id="display-container">
-      <div id="booksGrid"></div>
-    </section>
-    <div class="form-container" id="popup">
-      <form id="add-book-form">
+
+    <main id="display-container" class="main container">
+      <div class="books-grid" id="booksGrid"></div>
+    </main>
+
+    <div class="form-popup" id="popup">
+      <form class="add-book-form">
         <div class="form-heading">
           <h2>add new book</h2>
         </div>
@@ -35,7 +37,7 @@
           <label for="status">have you read it?</label>
           <input type="checkbox" class="checkbox" id="status" />
           <br />
-          <button id="submit-btn" type="submit">Submit</button>
+          <button id="submit-btn" class="btn" type="submit">Submit</button>
         </div>
       </form>
     </div>
