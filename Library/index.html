@@ -14,8 +14,11 @@
         <button id="new-book-btn"><strong>+ add book</strong></button>
       </nav>
     </header>
-    <div class="form-container">
-      <form id="popup">
+    <section id="display-container">
+      <div id="booksGrid"></div>
+    </section>
+    <div class="form-container" id="popup">
+      <form id="add-book-form">
         <div class="form-heading">
           <h2>add new book</h2>
         </div>
@@ -36,10 +39,7 @@
         </div>
       </form>
     </div>
-    <section class="book-cards">
-      <div id="display-container"></div>
-    </section>
-    <div class="modal" id="accountModal"></div>
+
     <div class="overlay" id="overlay"></div>
   </body>
 </html>
