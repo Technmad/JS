@@ -62,7 +62,7 @@ function createCards(items) {
   const readStatus = document.createElement("button");
   const remove = document.createElement("button");
 
-  bookCard.classList.add("book");
+  bookCard.classList.add("book-card");
   bookCard.setAttribute("id", Library.indexOf(items));
 
   title.textContent = items.title;
