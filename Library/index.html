@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="test.js" defer></script>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <header>
       <h1>bookMania</h1>
+      <nav class="btn">
+        <button id="new-book-btn"><strong>+ add book</strong></button>
+      </nav>
     </header>
-    <div class="btn">
-      <button id="new-book-btn"><strong>+</strong></button>
-    </div>
     <div class="form-container">
       <form id="popup">
         <div class="form-heading">
-          <h2>New Book</h2>
+          <h2>add new book</h2>
         </div>
         <div class="input-container">
           <label for="title">Title :</label>
@@ -29,19 +29,17 @@
           <label for="pages">Pages :</label>
           <input type="text" name="pages" id="pages" required />
           <br />
-          <label for="status">Read :</label>
-          <select name="status" id="status">
-            <option value="YES">YES</option>
-            <option value="NO">NO</option>
-          </select>
+          <label for="status">have you read it?</label>
+          <input type="checkbox" class="checkbox" id="status" />
           <br />
-          <button id="submit-btn">Add Book</button>
-          <button id="clear-btn">Clear</button>
+          <button id="submit-btn" type="submit">Submit</button>
         </div>
       </form>
     </div>
     <section class="book-cards">
-      <div class="display-container"></div>
+      <div id="display-container"></div>
     </section>
+    <div class="modal" id="accountModal"></div>
+    <div class="overlay" id="overlay"></div>
   </body>
 </html>
